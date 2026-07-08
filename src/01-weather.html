@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color switcher</title>
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
+  <body>
+    <p><a href="index.html">Go back</a></p>
+
+    <form class="search-form">
+      <label>
+        <span>Enter city</span>
+        <input type="text" name="city" />
+      </label>
+      <select name="days">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="7">7</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    <h2 class="city"></h2>
+
+    <ul class="container"></ul>
+
+    <script src="js/01-weather.js" type="module"></script>
+  </body>
+</html>
