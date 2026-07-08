@@ -1,4 +1,4 @@
-const BASE_URL = 'http://api.weatherapi.com/v1';
+const BASE_URL = 'https://api.weatherapi.com/v1';
 const API_KEY = '9d14047e46094293a1f155227260807';
 
 const cityTitle = document.querySelector('.city');
