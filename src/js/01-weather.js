@@ -20,7 +20,11 @@ function onSearchSubmit(evt) {
     return;
   }
 
-  fetchWeather(cityValue, daysValue).then(data => renderMarkup(data));
+  fetchWeather(cityValue, daysValue)
+    .then(renderMarkup)
+    .catch(err => console.error(err.message || 'something went wrong'));
+
+  evt.currentTarget.reset();
 }
 
 function renderMarkup(data) {
@@ -44,13 +48,10 @@ function createMarkup(arr) {
 function fetchWeather(city, days) {
   return fetch(
     `${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=${days}`
-  )
-    .then(resp => {
-      console.log(resp);
-      if (!resp.ok) {
-        throw new Error(resp.statusText);
-      }
-      return resp.json();
-    })
-    .catch(err => console.error(err));
+  ).then(resp => {
+    if (!resp.ok) {
+      throw new Error(resp.statusText);
+    }
+    return resp.json();
+  });
 }
