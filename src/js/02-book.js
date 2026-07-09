@@ -2,7 +2,7 @@ const BASE_URL = 'https://openlibrary.org/search.json';
 
 const searchForm = document.querySelector('.search-form');
 const bookList = document.querySelector('.books');
-const title = document.querySelector('.title');
+const titleEL = document.querySelector('.title');
 
 searchForm.addEventListener('submit', onSearch);
 
@@ -23,7 +23,7 @@ function onSearch(evt) {
       renderMarkup(data);
       evt.target.reset();
     })
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 }
 
 function fetchBook(title) {
@@ -37,9 +37,11 @@ function fetchBook(title) {
 
 function renderMarkup(data) {
   if (!data.docs.length) {
-    title.textContent = 'No books found';
+    titleEL.textContent = 'No books found';
+    bookList.innerHTML = '';
     return;
   }
+  titleEL.textContent = '';
   bookList.innerHTML = createMarkup(data.docs);
 }
 
@@ -47,8 +49,8 @@ function createMarkup(arr) {
   return arr
     .map(
       ({ title, author_name, first_publish_year }) => `<li>
-        <h2>${title ?? 'Unknown author'}</h2>
-        <h3>${author_name}</h3>
+        <h2>${title ?? 'Unknown title'}</h2>
+        <h3>${author_name?.join(', ') ?? 'Unknown author'}</h3>
 <div>
         <p>First published:</p>
         <p>${first_publish_year ?? 'Unknown year'}</p>
