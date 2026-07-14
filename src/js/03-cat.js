@@ -22,7 +22,7 @@ function onChange(evt) {
       catInfo.innerHTML = createCatInfoMarkup(data);
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
       hideLoader();
       showError();
     });
@@ -39,7 +39,7 @@ function init() {
       breedSelect.innerHTML = createSelectBreedMarkup(data);
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
       hideLoader();
       showError();
     });
