@@ -21,3 +21,11 @@ img {
 ul {
   list-style: none;
 }
+
+.error {
+  color: red;
+}
+
+.cat-info {
+  margin-top: 20px;
+}
