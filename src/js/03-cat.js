@@ -11,21 +11,20 @@ init();
 
 function onChange(evt) {
   const breedId = evt.target.value;
-
+  hideError();
   showLoader();
   catInfo.innerHTML = '';
 
   fetchCatByBreed(breedId)
     .then(data => {
       hideError();
-      hideLoader();
       catInfo.innerHTML = createCatInfoMarkup(data);
     })
     .catch(err => {
       console.error(err);
-      hideLoader();
       showError();
-    });
+    })
+    .finally(() => hideLoader());
 }
 
 function init() {
@@ -33,14 +32,13 @@ function init() {
   fetchBreeds()
     .then(data => {
       hideError();
-      hideLoader();
       breedSelect.hidden = false;
 
       breedSelect.innerHTML = createSelectBreedMarkup(data);
     })
     .catch(err => {
       console.error(err);
-      hideLoader();
       showError();
-    });
+    })
+    .finally(() => hideLoader());
 }

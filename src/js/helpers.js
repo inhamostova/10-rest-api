@@ -17,4 +17,12 @@ function hideError() {
   error.hidden = true;
 }
 
-export { showError, showLoader, hideError, hideLoader };
+function handleResponse(resp) {
+  if (!resp.ok) {
+    throw new Error(resp.statusText);
+  }
+
+  return resp.json();
+}
+
+export { showError, showLoader, hideError, hideLoader, handleResponse };
