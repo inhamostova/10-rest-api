@@ -2,19 +2,11 @@ const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 
 function showLoader() {
-  loader.hidden = false;
+  loader.classList.remove('is-hidden');
 }
 
 function hideLoader() {
-  loader.hidden = true;
-}
-
-function showError() {
-  error.hidden = false;
-}
-
-function hideError() {
-  error.hidden = true;
+  loader.classList.add('is-hidden');
 }
 
 function handleResponse(resp) {
@@ -25,4 +17,4 @@ function handleResponse(resp) {
   return resp.json();
 }
 
-export { showError, showLoader, hideError, hideLoader, handleResponse };
+export { showLoader, hideLoader, handleResponse };
